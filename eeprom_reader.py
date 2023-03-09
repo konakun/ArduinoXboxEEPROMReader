@@ -4,7 +4,6 @@ from os import system, path
 
 
 SENT_PARAMETERS = len(argv) - 1
-print(SENT_PARAMETERS)
 PORT = argv[1] if SENT_PARAMETERS == 1 else 'COM3'
 FILE_NAME = argv[2] if SENT_PARAMETERS > 1 else 'EEPROM.bin'
 EEPROM_SIZE = 256
@@ -30,11 +29,8 @@ except:
 
 while SAVED_FILE_SIZE != EEPROM_SIZE:
     data = serial_connection.readline()
-    print(data)
     saved_data += data 
     SAVED_FILE_SIZE += len(data)
-    print(SAVED_FILE_SIZE)
-
 
 file = open(FILE_NAME, 'wb')
 file.write(saved_data)
